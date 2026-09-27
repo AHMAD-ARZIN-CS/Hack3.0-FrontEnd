@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+    <h1>Create Post</h1>
+
+    <div class="stack">
+        <article class="card" style="margin-top: 20px">
+            <form action="" method="post" novalidate>
+                {{ form.hidden_tag() }}
+                <div class="card-title">{{ form.title.label }}</div>
+                    {{ form.title(size=32) }}
+
+                    {% for error in form.title.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+
+                    {{ form.body(rows=6, cols=50, placeholder="Make a post..") }}
+                    {% for error in form.body.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+
+                    <br>
+                    {{ form.category.label }}
+                    {{ form.category }}
+
+                    {{ form.submit() }}
+            </form>
+        </article>
+    </div>
+{% endblock %}

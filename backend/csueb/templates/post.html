@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Forum{% endblock %}
+{% block content %}
+    <div class="stack">
+    <p style="color:var(--brand);font-size:14px;font-weight:800">
+        <a href="{{ url_for("link.getposts") }}">← Back to forum</a>
+    </p>
+    <div class="section-head"><h1>{{ post["title"] }}</h1></div>
+    <div>
+        <article class="card">
+            <div class="profile-header">
+                <div class="avatar">🔗</div>
+                <div>
+                    <h1 class="profile-name">{{ post["firstname"] }} {{ post["lastname"] }} </h1>
+                    <div class="profile-sub">
+                        <a href="{{ url_for("link.getprofile", uuid=post["author_uuid"]) }}">{{ post["username"] }}</a> | {{ post["created"] }}</div>
+                </div>
+            </div>
+            <div class="card-desc">{{ post["body"] }}</div>
+        </article>
+    </div>
+    </div>
+    <div class="stack" style="padding-top: 30px">
+    <h2>Leave a Reply</h2>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.body(rows=6, cols=50, placeholder="Contribute to the discussion...") }}
+            {% for error in form.body.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+            <br>
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    </div>
+
+    <div class="stack">
+    <h2>Comments</h2>
+    {% for comment in comments %}
+        <article class="card">
+            <div class="profile-header">{{ comment["firstname"] }} {{ comment["lastname"] }} | {{ post["created"] }}</div>
+            <div class="card-meta">
+                <a href="{{ url_for("link.getprofile", uuid=comment["author_uuid"]) }}">{{ comment["username"] }} (see profile)</a>
+            </div>
+            <div class="card-desc">{{ comment["body"] }}</div>
+        </article>
+    {% endfor %}
+    </div>
+{% endblock %}
+
+

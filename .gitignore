@@ -1,0 +1,37 @@
+# Dependencies and build output
+node_modules/
+.next/
+out/
+build/
+*.tsbuildinfo
+next-env.d.ts
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local databases (created by `flask --app csueb init-db`)
+backend/instance/
+*.sqlite
+*.sqlite3
+
+# Secrets: never commit these
+.env
+.env.local
+.env.*.local
+secrets.json
+secret-keys.json
+*serviceAccount*.json
+*.pem
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local backups and submission ZIPs
+_backups/
+_submission/

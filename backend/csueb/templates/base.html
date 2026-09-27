@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+        <meta charset="UTF-8">
+        <meta name="theme-color" content="#0b6e4f">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        {% endblock %}
+</head>
+<body>
+    <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand-row">
+        <a class="brand" href="{{ url_for("home") }}">Home</a>
+        <a class="safety-link" href="{{ url_for("safety") }}">⚠ Student Safety Resources</a>
+      </div>
+    </div>
+    </header>
+    <div id="warning">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <div>{{ message }}</div>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}</div>
+    <section class="main">{% block content %}{% endblock %}</section>
+    {% block footer %}
+        <nav class="bottom-nav" aria-label="Main">
+            <div id="bottomNav" class="bottom-nav-inner">
+                    <a class="nav-item active" href="{{ url_for("home") }}"><span class="nav-icon">⌂</span>Home</a>
+                {% if g.user %}
+                    <a class="nav-item" href="{{ url_for("link.getprofile", uuid=g.user['uuid']) }}"><span class="nav-icon">👤 </span>Profile</a>
+                    <a class="nav-item" href="{{ url_for("link.getposts") }}"><span class="nav-icon">👥💬</span>Community</a>
+                    <a class="nav-item" href="{{ url_for("link.submit") }}"><span class="nav-icon">✦︎</span>New Post</a>
+                    <a class="nav-item" href="{{ url_for("link.logout") }}"><span class="nav-icon">➜]</span>Logout</a>
+                {% else %}
+                    <a class="nav-item" href="{{ url_for("link.login") }}"><span class="nav-icon">[←</span>Login</a>
+                    <a class="nav-item" href="{{ url_for("link.register") }}"><span class="nav-icon">🔗</span>Register</a>
+                {% endif %}
+            </div>
+        </nav>
+    {% endblock %}
+</body>
+</html>

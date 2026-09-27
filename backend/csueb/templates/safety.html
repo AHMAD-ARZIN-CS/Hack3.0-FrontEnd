@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+    <div class="page-header">
+        <h1 class="page-title">Safety</h1>
+        <p>Official safety contacts and reporting channels in one place.</p>
+    </div>
+    <div class="emergency">
+        <strong style="font-size: 18px">In danger right now?</strong>
+        <p style="margin: 3px 0; font-size: 13px">East Bay Link is not an emergency service.</p>
+        <a class="btn" href="tel:911">☎ Call 911</a>
+    </div>
+    <div class="stack">
+        <article class="card">
+            <div class="card-title">911 emergency</div>
+            <div class="card-meta">Emergency services · Off campus · Verified</div>
+            <div class="card-desc">Immediate danger, medical emergency, or crime in progress. Call 911.</div>
+
+            <div class="card-actions">
+                <a class="btn brand" href="tel:911" target="_self" rel="noopener">Open resource</a>
+            </div>
+        </article>
+        <article class="card">
+            <div class="card-title">988 Suicide &amp; Crisis Lifeline</div>
+            <div class="card-meta">988 Lifeline · Off campus · Verified</div>
+            <div class="card-desc">Free, 24/7 support by call or text at 988.</div>
+
+            <div class="card-actions">
+                <a class="btn brand" href="https://988lifeline.org" target="_blank" rel="noopener">Open resource</a>
+            </div>
+        </article>
+        <article class="card">
+            <div class="card-title">Student counseling &amp; health</div>
+            <div class="card-meta">CSUEB Student Health / Counseling · On campus</div>
+            <div class="card-desc">Free, confidential counseling and basic health services for students.</div>
+
+            <div class="card-actions">
+                <a class="btn brand" href="https://www.csueastbay.edu" target="_blank" rel="noopener">Open resource</a>
+            </div>
+        </article>
+        <article class="card">
+            <div class="card-title">Campus police / public safety</div>
+            <div class="card-meta">CSUEB Campus Safety · On campus</div>
+            <div class="card-desc">
+                Non-emergency campus safety, safety escorts, and incident reporting. For emergencies call 911.
+            </div>
+
+            <div class="card-actions">
+                <a class="btn brand" href="https://www.csueastbay.edu" target="_blank" rel="noopener">Open resource</a>
+            </div>
+        </article>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,4 @@
+# Packages imported by csueb/ (flask, flask_wtf, wtforms). email-validator is required by the WTForms Email() check.
+flask>=3.0
+flask-wtf>=1.2
+email-validator>=2.0

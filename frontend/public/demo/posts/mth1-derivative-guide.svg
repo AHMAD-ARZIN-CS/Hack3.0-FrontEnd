@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  <title>A one-page handwritten study guide titled Derivative rules, with the power, product, quotient, and chain rules.</title>
+  <rect width="1200" height="750" fill="#c9a77c"/>
+  <g opacity="0.18" stroke="#7a5a35" stroke-width="3">
+    <path d="M0 90 C 300 110, 600 60, 1200 100M0 300 C 400 330, 800 270, 1200 310M0 520 C 350 540, 850 490, 1200 530M0 700 C 300 690, 700 730, 1200 700"/>
+  </g>
+  <g transform="translate(600 385) rotate(-3)">
+    <rect x="-372" y="-352" width="744" height="712" fill="#000" opacity="0.18" transform="translate(10 12)"/>
+    <rect x="-372" y="-352" width="744" height="712" fill="#fdfcf7"/>
+    <g stroke="#b9d3e3" stroke-width="2"><path d="M-372 -250H372M-372 -190H372M-372 -130H372M-372 -70H372M-372 -10H372M-372 50H372M-372 110H372M-372 170H372M-372 230H372M-372 290H372"/></g>
+    <path d="M-300 -352V360" stroke="#d8452a" stroke-width="2" opacity="0.7"/>
+    <g font-family="'Comic Sans MS', 'Segoe Print', 'Bradley Hand', cursive" fill="#17252f">
+      <text x="-270" y="-275" font-size="46" font-weight="700" fill="#8f3a10">Derivative rules</text>
+      <text x="200" y="-275" font-size="22" fill="#5a6770">MTH 1</text>
+      <text x="-270" y="-200" font-size="30"><tspan font-weight="700">Power</tspan>   d/dx [xⁿ] = n·xⁿ⁻¹</text>
+      <text x="-230" y="-150" font-size="24" fill="#5a6770">ex: d/dx [x⁵] = 5x⁴</text>
+      <text x="-270" y="-80" font-size="30"><tspan font-weight="700">Product</tspan>   (fg)′ = f′g + fg′</text>
+      <text x="-270" y="-10" font-size="30"><tspan font-weight="700">Quotient</tspan>   (f/g)′ = (f′g − fg′) / g²</text>
+      <text x="-230" y="40" font-size="24" fill="#5a6770">"low d-high minus high d-low"</text>
+      <text x="-270" y="110" font-size="30"><tspan font-weight="700">Chain</tspan>   d/dx f(g(x)) = f′(g(x))·g′(x)</text>
+      <text x="-230" y="160" font-size="24" fill="#5a6770">ex: d/dx sin(3x) = 3cos(3x)</text>
+      <text x="-270" y="240" font-size="28" fill="#b4381f">★ check the inside function first!</text>
+    </g>
+    <path d="M-280 -118 q 120 16 250 0" stroke="#e6a23c" stroke-width="16" opacity="0.35" fill="none"/>
+  </g>
+  <g transform="translate(1040 560) rotate(28)">
+    <rect x="-14" y="-150" width="28" height="260" rx="4" fill="#e6a23c"/>
+    <path d="M-14 110 L0 150 L14 110 Z" fill="#f3d9a8"/><path d="M-5 136 L0 150 L5 136 Z" fill="#17252f"/>
+    <rect x="-14" y="-170" width="28" height="24" rx="4" fill="#d8452a"/>
+  </g>
+  <rect x="30" y="30" width="116" height="40" rx="8" fill="#17252f" opacity="0.6"/>
+  <text x="88" y="57" fill="#ffffff" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700">DEMO</text>
+</svg>

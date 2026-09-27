@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens. Change colors here, not in components.
+ * Light theme only for the hackathon (dark mode DEFERRED).
+ */
+:root {
+  /*
+   * California poppy + sage (D38). Warm cream canvas, white surfaces, deep olive text.
+   * All text colors pass WCAG AA (4.5:1) on white, --bg, and --muted.
+   */
+  --bg: #f7f3ea;         /* warm cream */
+  --surface: #ffffff;
+  --muted: #edefe6;      /* pale sage: chips, meeting boxes, hovers */
+  --line: #e2ded2;
+  --sidebar: #e9eee2;    /* sage panel behind the desktop navigation */
+  --ink: #27291f;        /* deep olive-charcoal, 14.8:1 on white */
+  --ink-soft: #5c6152;   /* 5.5:1 on --muted */
+  /* Poppy orange is the brand: buttons, links, active tab. 5.7:1 white, 4.9:1 --muted. */
+  --brand: #b0450f;
+  --brand-deep: #8f3a10;
+  --on-brand: #ffffff;
+  /*
+   * Accents are small details only (icons, avatars, active reactions), never page backgrounds.
+   * The base value is for fills and icons. The -ink value is the text-safe version (5:1+).
+   */
+  --petal: #d8452a;      /* poppy red: people, social moments */
+  --petal-ink: #b4381f;
+  --sage: #8faa8b;       /* sage: academic, helpful */
+  --sage-ink: #4a6a4c;
+  --golden: #e6a23c;     /* golden poppy: housing, opportunities */
+  --golden-ink: #8a5a0e;
+  /* Status green: verified, success, available. Always paired with a check icon so it never reads as sage decoration. */
+  --success: #2e7d4f;
+  --warn: #e6a23c;
+  --danger: #b42318;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-sidebar: var(--sidebar);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-brand: var(--brand);
+  --color-brand-deep: var(--brand-deep);
+  --color-petal: var(--petal);
+  --color-petal-ink: var(--petal-ink);
+  --color-sage: var(--sage);
+  --color-sage-ink: var(--sage-ink);
+  --color-golden: var(--golden);
+  --color-golden-ink: var(--golden-ink);
+  --color-on-brand: var(--on-brand);
+  --color-success: var(--success);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-body), system-ui, sans-serif;
+  --font-display: var(--font-heading), Georgia, serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+/* Headings use the serif display face (Fraunces). Body, posts, controls, and metadata use Figtree. Fonts are set in app/layout.tsx. */
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+/* Hide horizontal scrollbar on chip rows while keeping them scrollable */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Contribution graph scale: sage, so it reads as East Bay Link and not as any other product's chart. */
+:root {
+  --activity-0: #eceee6;
+  --activity-1: #cfdcc9;
+  --activity-2: #a3bd9e;
+  --activity-3: #6b8f69;
+  --activity-4: #3f5c42;
+}

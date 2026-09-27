@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Forum{% endblock %}
+{% block content %}
+    <div class="section-head">
+    {% if category %}
+        <h1>{{ category }}</h1>
+    {% else %}
+        <h1>Community</h1>
+    {% endif %}
+    </div>
+    <div>
+
+    <div class="stack">
+        <div class="chips">
+        <button class="chip" data-need="">
+            <a href="{{ url_for("link.getposts") }}">All</a>
+        </button>
+        <button class="chip" data-need="">
+            <a href="{{ url_for("link.sortByCategory", category="Study Help") }}">Study</a>
+        </button>
+        <button class="chip" data-need="">
+            <a href="{{ url_for("link.sortByCategory", category="Food Assistance") }}">Food</a>
+        </button>
+        <button class="chip" data-need="">
+            <a href="{{ url_for("link.sortByCategory", category="Roommate Request") }}">Housing</a>
+        </button>
+        <button class="chip" data-need="">
+            <a href="{{ url_for("link.sortByCategory", category="Financial Assistance") }}">Finances</a>
+        </button>
+        <button class="chip" data-need="">
+            <a href="{{ url_for("link.sortByCategory", category="Safety") }}">Safety</a>
+        </button>
+        </div>
+    </div>
+     <div class="stack">
+        <div class="card-actions">
+            <a class="btn brand" href="{{ url_for("link.submit") }}" target="_blank" rel="noopener">+ Add a new contribution</a>
+        </div>
+        {% for post in posts %}
+        <article class="card">
+            <div class="card-title">
+                <a href="{{ url_for("link.post", post_uuid=post['post_uuid']) }}">
+                    {{ post["title"] }}
+                </a>
+                <span class="badge brand">{{ post["category"] }}</span>
+            </div>
+            <div class="card-meta">
+                {{ post["firstname"] }} {{ post["lastname"] }} | {{ post["created"] }}
+                <a href="{{ url_for("link.getprofile", uuid=post["author_uuid"]) }}">(see profile)</a>
+            </div>
+            <div class="card-desc">{{ post["body"] }}</div>
+        </article>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+

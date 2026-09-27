@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <p style="color:var(--brand);font-size:14px;font-weight:800">California State University, East Bay</p>
+    <h1>Welcome to Link</h1>
+    <p>The social app for college communities</p>
+    <div class="grid-needs">
+        <a class="need-card featured " href="{{ url_for("link.sortByCategory", category="Study Help") }}">
+        <span class="icon">🎓</span><span class="need-label">I need study help<small>Notes, study guides, and tips from students</small></span>
+        </a>
+        <a class="need-card  " href="{{ url_for("link.sortByCategory", category="Food Assistance") }}">
+        <span class="icon">🍴</span><span class="need-label">I need food</span>
+        </a>
+        <a class="need-card  " href="{{ url_for("link.sortByCategory", category="Roommate Request") }}">
+        <span class="icon">⌂</span><span class="need-label">I need housing</span>
+        </a>
+        <a class="need-card  " href="{{ url_for("link.sortByCategory", category="Financial Assistance") }}">
+        <span class="icon">💳</span><span class="need-label">I need financial help</span>
+        </a>
+        <a class="need-card  safety" href="{{ url_for("link.sortByCategory", category="Safety") }}">
+        <span class="icon">⚠</span><span class="need-label">I need to report a safety issue</span>
+        </a>
+    </div>
+    <a class="community-link" href="{{ url_for("link.getposts") }}">
+        <span>👥 <strong>CSUEB community</strong><br><small class="muted">Questions, events, study groups, opportunities</small></span><span>›</span>
+    </a>
+    <section class="section">
+        <div class="section-head">
+            <h2>On campus at CSUEB</h2>
+        </div>
+        <div class="stack">
+            <article class="card">
+                <div class="card-title">Campus food pantry</div>
+                <div class="card-meta">CSUEB Basic Needs · On campus</div>
+                <div class="card-desc">Free groceries and snacks for enrolled students. Bring your student ID.</div>
+                <div class="card-meta" style="margin-top: 8px">Check campus site for hours</div>
+                <div class="card-actions">
+                    <a class="btn brand" href="https://www.csueastbay.edu" target="_blank" rel="noopener">Open resource</a>
+                </div>
+            </article>
+            <article class="card">
+                <div class="card-title">Basic needs &amp; housing help</div>
+                <div class="card-meta">CSUEB Basic Needs · On campus</div>
+                <div class="card-desc">
+                    Staff who help with housing instability, emergency referrals, and CalFresh applications.
+                </div>
+
+                <div class="card-actions">
+                    <a class="btn brand" href="https://www.csueastbay.edu" target="_blank" rel="noopener">Open resource</a>
+                </div>
+            </article>
+            <article class="card">
+                <div class="card-title">Financial aid office</div>
+                <div class="card-meta">CSUEB Financial Aid · On campus</div>
+                <div class="card-desc">Help with FAFSA / CA Dream Act, grants, fee waivers, and emergency funds.</div>
+
+                <div class="card-actions">
+                    <a class="btn brand" href="https://www.csueastbay.edu" target="_blank" rel="noopener">Open resource</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+{% endblock %}
