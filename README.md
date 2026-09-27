@@ -48,6 +48,7 @@ The two parts are **not connected to each other yet**. The frontend's `docs/BACK
 - Marketplace with categories, conditions, and contact by request (no payments)
 - Profiles with contribution stats and badges computed from helping, not activity
 - Responsive: phone tabs, tablet, and a desktop sidebar
+- Installs on an iPhone home screen (app icon, full-screen launch) and includes an iPhone sandbox page at `/iphone.html`
 - Deliberate empty, loading, and error states on every data screen
 
 **Backend (CSUEB Link)**
@@ -109,6 +110,19 @@ flask --app csueb run           # http://127.0.0.1:5000
 ```
 
 Register with an `@csueastbay.edu` (or `@horizon.csueastbay.edu`) email, then sign in.
+
+## Try it as an iPhone user
+
+**Sandbox on a laptop.** Run the frontend and open http://localhost:3000/iphone.html. The real app runs inside an iPhone-sized frame. Use **Start as demo student** or **Start from the welcome screen**, then tap around inside the phone.
+
+**On your own iPhone.** The phone needs a public address, so deploy the frontend once (free):
+
+1. Go to [vercel.com/new](https://vercel.com/new) and sign in with GitHub.
+2. Import this repository.
+3. Set **Root Directory** to `frontend`. Leave everything else as default (no environment variables needed for demo mode).
+4. Click **Deploy**. Vercel gives you a link like `https://<project>.vercel.app`.
+
+Then on the iPhone: open that link in Safari, tap **Share → Add to Home Screen**. East Bay Link gets its own icon and opens full screen like an app. On a laptop, `https://<project>.vercel.app/iphone.html` shows the phone frame plus a QR code to scan.
 
 ## Environment variables
 

@@ -15,16 +15,22 @@ import { CampusProvider } from "@/context/CampusContext";
 const body = Figtree({ variable: "--font-body", subsets: ["latin"], display: "swap" });
 const display = Fraunces({ variable: "--font-heading", subsets: ["latin"], weight: ["600", "700"], display: "swap" });
 
-// LOGO: the browser tab icon is app/favicon.ico. Replace that file (or add app/icon.png) to change it.
+// LOGO: app icons live in app/favicon.ico (browser tab), app/apple-icon.png (iPhone home screen),
+// and public/icons/ (Android / install). Replace those files to change them.
 export const metadata: Metadata = {
   title: { default: APP_NAME, template: `%s · ${APP_NAME}` },
   description: APP_TAGLINE,
+  // iPhone "Add to Home Screen": opens full screen like an app, with its own name under the icon.
+  appleWebApp: { capable: true, title: APP_NAME, statusBarStyle: "default" },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   themeColor: "#b0450f",
+  // Lets the layout reach the rounded screen edges. Bottom tabs and the top bar pad themselves
+  // with env(safe-area-inset-*) so nothing sits under the notch or the home bar.
+  viewportFit: "cover",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

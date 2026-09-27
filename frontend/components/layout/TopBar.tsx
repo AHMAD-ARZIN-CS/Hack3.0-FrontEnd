@@ -5,7 +5,7 @@ import { CampusSelector } from "./CampusSelector";
 
 export function TopBar() {
   return (
-    <header className="sticky top-0 z-20 border-b border-line bg-surface/95 backdrop-blur lg:hidden">
+    <header className="sticky top-0 z-20 border-b border-line bg-surface/95 pt-[env(safe-area-inset-top)] backdrop-blur lg:hidden">
       <div className="mx-auto flex max-w-screen-sm items-center justify-between gap-2 px-4 py-2">
         <div className="flex items-center gap-3">
           {/* LOGO: phone top bar. Change the logo in components/brand/Logo.tsx */}

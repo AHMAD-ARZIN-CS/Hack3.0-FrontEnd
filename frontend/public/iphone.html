@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>iPhone sandbox · East Bay Link</title>
+  <meta name="description" content="Try East Bay Link inside an iPhone-sized frame, or scan to open it on your own phone." />
+  <link rel="icon" href="/favicon.ico" />
+  <style>
+    /* Sandbox page for laptops: the real app runs inside the frame, same data, same sign-in. */
+    :root {
+      --bg: #f7f3ea; --surface: #ffffff; --ink: #27291f; --ink-soft: #5c6152; --line: #e2ded2;
+      --brand: #b0450f; --brand-deep: #8f3a10; --sage: #4a6a4c; --sidebar: #e9eee2;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; background: var(--bg); color: var(--ink);
+      font: 16px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      display: flex; align-items: safe center; justify-content: center; gap: 48px; padding: 20px 16px;
+    }
+    h1 { font: 700 30px/1.15 Georgia, "Times New Roman", serif; margin: 0 0 6px; letter-spacing: -0.01em; }
+    .eyebrow { color: var(--brand); font-weight: 700; font-size: 14px; margin: 0 0 4px; }
+    .muted { color: var(--ink-soft); }
+
+    /* iPhone 15-ish logical size: 393 × 852 CSS px. Scaled down to fit shorter screens. */
+    /* Sticky so the phone stays in view while the notes panel scrolls on short screens. */
+    .phone-wrap { flex: none; height: min(880px, calc(100vh - 40px)); aspect-ratio: 417 / 876; position: sticky; top: 20px; align-self: flex-start; }
+    .phone {
+      width: 417px; height: 876px; transform-origin: top left;
+      background: #1c1d1a; border-radius: 64px; padding: 12px; position: relative;
+      box-shadow: 0 30px 60px -20px rgba(39, 41, 31, .45), inset 0 0 0 2px #3a3b36;
+    }
+    .screen { width: 393px; height: 852px; border-radius: 52px; overflow: hidden; background: var(--surface); position: relative; }
+    .island {
+      position: absolute; top: 11px; left: 50%; transform: translateX(-50%);
+      width: 122px; height: 35px; border-radius: 20px; background: #000; z-index: 2; pointer-events: none;
+    }
+    /* Status bar area on top, home bar area at the bottom, like a real iPhone screen. */
+    iframe { border: 0; width: 100%; height: 100%; display: block; padding: 50px 0 26px; background: var(--surface); }
+    .home-bar { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 134px; height: 5px; border-radius: 3px; background: #1c1d1a; pointer-events: none; }
+
+    .panel { max-width: 420px; }
+    .steps { margin: 14px 0 16px; padding: 0; list-style: none; display: grid; gap: 6px; }
+    .steps li { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 7px 12px; font-size: 14px; }
+    .steps b { color: var(--brand-deep); }
+    .buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+    button, .btn {
+      font: inherit; font-weight: 600; font-size: 15px; min-height: 44px; padding: 0 16px; border-radius: 12px;
+      border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer;
+      display: inline-flex; align-items: center; text-decoration: none;
+    }
+    button.primary, .btn.primary { background: var(--brand); border-color: var(--brand); color: #fff; }
+    button:focus-visible, .btn:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+    .qr { margin-top: 16px; display: flex; gap: 14px; align-items: center; background: var(--sidebar); border-radius: 16px; padding: 14px; }
+    .qr-box { background: #fff; padding: 8px; border-radius: 10px; line-height: 0; flex: none; }
+    .qr-box img { width: 104px; height: 104px; image-rendering: pixelated; }
+    .qr p { margin: 0; font-size: 14px; }
+    .note { font-size: 13px; margin-top: 14px; }
+    .on-phone { display: none; }
+
+    @media (max-width: 860px) {
+      body { flex-direction: column; gap: 24px; }
+      .phone-wrap { height: min(760px, calc(100vh - 48px)); }
+    }
+    /* Opened on an actual phone: skip the frame, go straight to the app. */
+    @media (max-width: 500px) {
+      .phone-wrap, .qr { display: none; }
+      .on-phone { display: block; margin-top: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="phone-wrap" id="phoneWrap">
+    <div class="phone" id="phone">
+      <div class="screen">
+        <div class="island" aria-hidden="true"></div>
+        <iframe id="app" title="East Bay Link running at iPhone size" src="/"></iframe>
+        <div class="home-bar" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+
+  <main class="panel">
+    <p class="eyebrow">Sandbox</p>
+    <h1>Try East Bay Link as an iPhone user</h1>
+    <p class="muted">This is the real app at iPhone size. Tap and scroll inside the phone. Everything is demo data, so nothing you do is saved for anyone else.</p>
+
+    <ol class="steps">
+      <li><b>1.</b> Start as the demo student, or create an account to see sign-up and onboarding.</li>
+      <li><b>2.</b> Community: open a post, mark it helpful, add a comment.</li>
+      <li><b>3.</b> Academic: add a course, open its notes and study guides.</li>
+      <li><b>4.</b> Housing and Discover: filter rooms, find food help, browse the marketplace.</li>
+      <li><b>5.</b> Profile: see contribution credit for helping others.</li>
+    </ol>
+
+    <div class="buttons">
+      <button class="primary" id="demo">Start as demo student</button>
+      <button id="fresh">Start from the welcome screen</button>
+    </div>
+
+    <div class="qr" id="qr">
+      <div class="qr-box" id="qrBox" aria-hidden="true"></div>
+      <p><b>On your own iPhone:</b> scan with the Camera app, then in Safari tap Share, then <b>Add to Home Screen</b>. It opens full screen like an app.</p>
+    </div>
+
+    <p class="on-phone"><a class="btn primary" href="/">Open the app</a></p>
+    <p class="note muted">Demo data resets when the page reloads. Sign-in is simulated in this browser and never stores passwords.</p>
+  </main>
+
+  <script src="/vendor/qrcode.js"></script>
+  <script>
+    (function () {
+      var frame = document.getElementById("app");
+      var phone = document.getElementById("phone");
+      var wrap = document.getElementById("phoneWrap");
+
+      // Scale the fixed-size phone to whatever height the laptop screen has.
+      function fit() {
+        var s = wrap.clientHeight / 876;
+        phone.style.transform = "scale(" + s + ")";
+      }
+      window.addEventListener("resize", fit);
+      fit();
+
+      // Same origin as the app, so the sandbox can set the demo session the app reads.
+      function setSession(value) {
+        try {
+          if (value) localStorage.setItem("ebl.mock.session", JSON.stringify(value));
+          else localStorage.removeItem("ebl.mock.session");
+        } catch (e) { /* storage blocked: the app still works, you just sign in manually */ }
+      }
+      document.getElementById("demo").addEventListener("click", function () {
+        setSession({ userId: "user_demo" });
+        frame.src = "/?t=" + Date.now();
+      });
+      document.getElementById("fresh").addEventListener("click", function () {
+        setSession(null);
+        frame.src = "/welcome?t=" + Date.now();
+      });
+
+      // QR for the app's own address, so it works on any host (Vercel, localhost on Wi-Fi, ...).
+      try {
+        var qr = qrcode(0, "M");
+        qr.addData(location.origin + "/");
+        qr.make();
+        document.getElementById("qrBox").innerHTML = qr.createImgTag(4, 0);
+        document.querySelector("#qrBox img").alt = "QR code to open the app on a phone";
+      } catch (e) {
+        document.getElementById("qr").style.display = "none";
+      }
+    })();
+  </script>
+</body>
+</html>

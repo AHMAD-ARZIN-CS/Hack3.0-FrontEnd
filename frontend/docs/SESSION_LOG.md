@@ -824,3 +824,18 @@ Pages → services/* (mock branch or api branch per function) → data/mock or s
 
 **NOT DONE / NEEDS THE TEAMMATE**
 Real backend URL or Firebase config (Q6), repo URL (Q8), real endpoint names and field shapes, adapters for community/academic/housing/food/marketplace once shapes are known, server-side authorization.
+
+## Session 23 · 2026-09-27 ~13:07 PT · iPhone sandbox
+
+**GOAL**
+A place to try the app as an iPhone user.
+
+**CHANGED**
+- Installable on iPhone: `app/manifest.ts`, `app/apple-icon.png`, `public/icons/icon-192.png` and `icon-512.png`, new `app/favicon.ico` (brand EB mark). `appleWebApp` metadata (full-screen launch, home-screen name) and `viewportFit: "cover"` in `app/layout.tsx`. Top bar pads for the notch (`env(safe-area-inset-top)`); bottom tabs already pad for the home bar.
+- Laptop sandbox: `public/iphone.html` runs the real app in an iPhone-sized frame (393×852) with "Start as demo student", "Start from the welcome screen", and a QR code for the current address. On a phone it shows "Open the app" instead. QR library vendored at `public/vendor/qrcode.js` (qrcode-generator 1.4.4, MIT) and excluded from lint.
+
+**TESTED**
+Sandbox: 11 checks (frame loads, QR, both start buttons, iPhone width 393, tabs navigate inside the frame, phone fallback, emulated iPhone 14 tap sign-in, no sideways scroll, no page errors); phone frame fully visible at 1440×900, 1280×720, 1024×768, 820×1180. All regression suites 0 failures. tsc, lint, build pass. Manifest, apple-touch-icon, apple web app meta, and viewport-fit=cover verified in served HTML.
+
+**NOT DONE**
+No public URL yet. Needs a deploy (Vercel import, root directory `frontend`). Real Safari on a physical iPhone not tested here (Chromium iPhone emulation only).

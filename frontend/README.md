@@ -26,6 +26,12 @@ Other commands: `npm run build`, `npm run lint`, `npm run typecheck` (generates 
 
 On first load you land on the public page. Use **Sign in → Continue as the demo student** to jump in, or create an account to walk through sign-up, email verification (simulated), and onboarding.
 
+## Try it as an iPhone user
+
+- **On a laptop:** open `/iphone.html` (for example http://localhost:3000/iphone.html). The real app runs inside an iPhone-sized frame, with buttons to start as the demo student or from the welcome screen, and a QR code for your phone.
+- **On an iPhone:** open the app's address in Safari, tap Share, then **Add to Home Screen**. It gets the East Bay Link icon and opens full screen like an app (web app manifest + Apple web app tags in `app/layout.tsx` and `app/manifest.ts`).
+- Your phone needs a public address to reach the app, for example a free Vercel deployment of this folder (see the root README).
+
 ## Current modes
 
 | Setting | Value | Meaning |
